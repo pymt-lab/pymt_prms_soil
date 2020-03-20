@@ -1,0 +1,4 @@
+name: prms_soil
+language: fortran
+package: prms_soil
+class: PRMSSoil
