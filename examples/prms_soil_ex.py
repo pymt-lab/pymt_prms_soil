@@ -16,6 +16,7 @@ print(m.get_component_name())
 # Initialize the model.
 os.chdir(run_dir)
 m.initialize(config_file)
+print(config_file)
 
 # List the model's exchange items.
 print('Number of input vars:', m.get_input_item_count())
@@ -27,7 +28,6 @@ for var in m.get_output_var_names():
 
 # Get variable info.
 var_name = 'soil_moist_tot'
-# var_name = 'strm_seg_in'
 # var_name = 'last_soil_moist'  # needs units
 print('Variable {}'.format(var_name))
 print(' - variable type:', m.get_var_type(var_name))
@@ -94,22 +94,23 @@ print(' - new time:', m.get_current_time())
 
 # Get the variable values.
 print('Get values of {}...'.format(var_name))
-val = np.empty(grid_size, dtype=np.float32)
+val = np.empty(grid_size, dtype=m.get_var_type(var_name))
 m.get_value(var_name, val)
 print(' - values at time {}:'.format(m.get_current_time()))
 print(val)
 
 # Get a reference to the variable and check that it updates.
-ref = m.get_value_ptr(var_name)
-for _ in range(3):
-    print(' - values (by ref) at time {}:'.format(m.get_current_time()))
-    print(ref)
-    m.update()
+if m.get_grid_type(grid_id) != 'scalar':
+    ref = m.get_value_ptr(var_name)
+    for _ in range(3):
+        print(' - values (by ref) at time {}:'.format(m.get_current_time()))
+        print(ref)
+        m.update()
 
 # Set new variable values.
 if var_name not in m.get_output_var_names():
     print('Set values of {}...'.format(var_name))
-    new = np.arange(grid_size, dtype=np.float32)
+    new = np.arange(grid_size, dtype=m.get_var_type(var_name))
     print(' - values to set:', new)
     m.set_value(var_name, new)
     print(' - check that values were set:', ref)
