@@ -1,7 +1,7 @@
-"""Run the PRMSSurface component in pymt."""
+"""Run the PRMSSoil component in pymt."""
 
 import numpy as np
-from pymt.models import PRMSSurface
+from pymt.models import PRMSSoil
 
 
 run_dir = 'pipestem'
@@ -9,7 +9,7 @@ config_file = 'control.simple1'
 
 
 # Instantiate the component and get its name.
-m = PRMSSurface()
+m = PRMSSoil()
 print(m.name)
 
 # Initialize the model. (Skipping setup step)
@@ -26,7 +26,7 @@ for var in m.output_var_names:
     print(' - {}'.format(var))
 
 # Get variable info.
-var_name = 'hru_ppt'   # vector
+var_name = 'soil_moist_tot'  # vector
 # var_name = 'nhru'      # scalar
 # var_name = 'dday_slope'  # rectilinear
 print('Variable {}'.format(var_name))
