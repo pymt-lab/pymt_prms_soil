@@ -5,7 +5,7 @@ import numpy as np
 from pymt_prms_soil import PRMSSoil
 
 
-run_dir = 'pipestem'
+run_dir = '../meta/PRMSSoil'
 config_file = 'control.default'
 
 
