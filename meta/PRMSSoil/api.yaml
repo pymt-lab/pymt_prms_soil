@@ -1,4 +1,4 @@
-name: prms_soil
+name: pymt_prms_soil
 language: fortran
-package: prms_soil
+package: pymt_prms_soil
 class: PRMSSoil

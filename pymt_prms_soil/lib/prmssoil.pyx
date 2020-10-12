@@ -122,13 +122,14 @@ cpdef to_string(bytes):
     except AttributeError:
         return bytes
 
-
 # start: prmssoil.pyx
 
 cdef class PRMSSoil:
 
     cdef int _bmi
     cdef char[2048] STR_BUFFER
+
+    METADATA = "../data/PRMSSoil"
 
     def __cinit__(self):
         self._bmi = bmi_new()

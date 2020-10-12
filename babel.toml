@@ -1,0 +1,26 @@
+[library]
+[library.PRMSSoil]
+language = "fortran"
+library = "bmiprmssoil"
+header = ""
+entry_point = "bmi_prms_soil"
+
+[build]
+undef_macros = []
+define_macros = []
+libraries = []
+library_dirs = []
+include_dirs = []
+extra_compile_args = []
+
+[package]
+name = "pymt_prms_soil"
+requirements = ["prms", "prms_soil"]
+
+[info]
+github_username = "pymt-lab"
+package_author = "Community Soil Dynamics Modeling System"
+package_author_email = "csdms@colorado.edu"
+package_license = "MIT"
+summary = "PyMT plugin for the PRMS6 Soil component"
+
